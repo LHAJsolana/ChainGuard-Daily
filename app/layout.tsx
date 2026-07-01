@@ -1,3 +1,3 @@
-import './globals.css'; import type {Metadata} from 'next'; import {AppShell} from '@/components/shell';
-export const metadata:Metadata={title:{default:'ChainGuard Daily',template:'%s · ChainGuard Daily'},description:'Daily on-chain safety checks for crypto users, builders, and developers.'};
+import './globals.css'; import type {Metadata} from 'next'; import {AppShell} from '@/components/shell'; import {getSiteUrl} from '@/lib/site';
+export const metadata:Metadata={metadataBase:new URL(getSiteUrl()),title:{default:'ChainGuard Daily',template:'%s · ChainGuard Daily'},description:'Read-only Solana wallet, token, transaction, and builder-readiness safety checks.',alternates:{canonical:'/'},openGraph:{type:'website',title:'ChainGuard Daily',description:'Explainable, read-only Solana safety signals.',siteName:'ChainGuard Daily',url:'/'},twitter:{card:'summary_large_image',title:'ChainGuard Daily',description:'Explainable, read-only Solana safety signals.'}};
 export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body className="noise"><AppShell>{children}</AppShell></body></html>}
