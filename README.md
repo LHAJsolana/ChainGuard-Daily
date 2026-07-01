@@ -1,12 +1,12 @@
 # ChainGuard Daily
 
-ChainGuard Daily is a production-ready MVP for daily Solana safety checks and builder launch readiness. It turns public on-chain information into readable, explainable risk signals without making financial claims.
+ChainGuard Daily is a read-only Solana safety-checking MVP and builder launch-readiness tool. It turns public on-chain information into readable, explainable signals without making financial claims or asking users to connect a wallet.
 
 ## Features
 
 - Premium responsive landing page and universal analyzer
-- Wallet reports with live Solana RPC data and resilient demo fallback
-- Token safety and transaction insight report foundations
+- Wallet reports using live confirmed Solana RPC data
+- SPL mint authority/supply checks and parsed transaction insights
 - Interactive builder launch-readiness scoring across five categories
 - Watchlist/dashboard preview and transparent methodology
 - Accessible dark UI, loading/error/empty states, copy feedback, and explorer links
@@ -23,7 +23,14 @@ copy .env.example .env.local
 npm run dev
 ```
 
-Open `http://localhost:3000`. Set `SOLANA_RPC_URL` to a dedicated Solana RPC endpoint for production. When the RPC cannot be reached, wallet reports clearly label and display demo fallback data rather than crashing.
+Open `http://localhost:3000`. Set `SOLANA_RPC_URL` to a dedicated Solana RPC endpoint for production. When live data cannot be reached, reports show an explicit unavailable state and never fabricate a score.
+
+Run verification with:
+
+```bash
+npm test
+npm run build
+```
 
 ## Production and Vercel
 
@@ -33,6 +40,8 @@ npm start
 ```
 
 Import the repository in Vercel, add `SOLANA_RPC_URL` under Project Settings → Environment Variables, and deploy. The app requires no persistent storage for this MVP.
+
+Also set `NEXT_PUBLIC_SITE_URL` to the canonical HTTPS URL and monitor `/api/health`. See [production readiness](docs/PRODUCTION_READINESS.md) before launch.
 
 ## Roadmap
 
